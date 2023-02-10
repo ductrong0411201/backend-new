@@ -166,7 +166,6 @@ class OrderController extends Controller
     public function makeReport($id)
     {
         $order = Order::with(['construction.user', 'construction.department', 'construction.structure', 'construction.area', 'construction.funding_agency', 'reports'])->findOrFail($id)->toArray();
-        dd($order);
         $order['department_name'] = array_key_exists('name', $order['construction']['department']) ? trim(preg_replace('/\r\n|\r|\n/', ' ', $order['construction']['department']['name'])) : 'undefined';
         $order['funding_name'] = isset($order['construction']['funding_agency']) && array_key_exists('name', $order['construction']['funding_agency']) ? trim(preg_replace('/\r\n|\r|\n/', ' ', $order['construction']['funding_agency']['name'])) : 'undefined';
         $date = Carbon::now("UTC +05:30");

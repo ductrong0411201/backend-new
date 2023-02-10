@@ -111,7 +111,7 @@ class UsersController extends Controller
 
         return response()->json([
             'status_code' => 200,
-            'message' => trans('strings.frontend.user.password_updated')
+            'message' => trans('Change password success')
         ]);
     }
 

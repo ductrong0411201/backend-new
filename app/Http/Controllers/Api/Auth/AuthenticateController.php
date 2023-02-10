@@ -167,19 +167,5 @@ class AuthenticateController extends Controller
     }
 
 
-    /**
-     * @param ChangePasswordRequest $request
-     *
-     * @return mixed
-     * @throws \App\Exceptions\GeneralException
-     */
-    public function changePassword(ChangePasswordRequest $request)
-    {
-        $this->user->changePassword($request->only('old_password', 'password'));
 
-        return response()->json([
-            'status_code' => 200,
-            'message' => trans('strings.frontend.user.password_updated')
-        ]);
-    }
 }
