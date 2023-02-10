@@ -31,7 +31,10 @@ class FundingAgencyController extends ApiServiceController
     public function update($id, AdminRequest $request)
     {
         $form = $request->only(['name','group_id','full_name', 'marker_color']);
-        return response()->json(FundingAgency::query()->findOrFail($id)->update($form));
+        $data = FundingAgency::query()->findOrFail($id)->update($form);
+        abort(200, 'Delete Success');
+        return response()->json($data);
+
     }
 
     public function getFundingSources()
@@ -59,8 +62,8 @@ class FundingAgencyController extends ApiServiceController
             abort(401, 'Source of Funding has been used by project MIS!');
         }
 
-        FundingGroup::query()->findOrFail($id)->delete();
-
+        FundingAgency::query()->findOrFail($id)->delete();
+        abort(200, 'Delete Success');
     }
 
 }

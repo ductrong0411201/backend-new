@@ -25,7 +25,7 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', Rule::unique('users'), 'regex:/^[a-zA-Z ]+$/u','max:64','name_reg'],
+            'name' => ['required', 'string', Rule::unique('users'), 'regex:/^[a-zA-Z ]+$/u','max:64'],
             'mobile' => ['required', 'string', 'max:10', 'min:10', Rule::unique('users')],
             'email' => ['string', 'email', 'max:64', Rule::unique('users')],
             'department_id'=> ['numeric', Rule::exists('departments', 'id')],
